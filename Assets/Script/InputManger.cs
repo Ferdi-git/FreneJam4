@@ -7,9 +7,7 @@ using UnityEngine;
 
 public class InputManger : MonoBehaviour
 {
-    private KeyCode RightKeyCode;
-    private KeyCode LeftKeyCode;
-    private KeyCode JumpKeyCode;
+    [SerializeField] SOInput soInput;
 
     [SerializeField] private TextMeshProUGUI RightText;
     [SerializeField] private TextMeshProUGUI LeftText;
@@ -43,7 +41,7 @@ public class InputManger : MonoBehaviour
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(input))
+                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -53,8 +51,8 @@ public class InputManger : MonoBehaviour
              
             yield return null;
         }
-        usedKeyCode.Append(input);
-        RightKeyCode = input;
+        usedKeyCode.Add(input);
+        soInput.RightKeyCode = input;
         RightText.text = "RIGHT : " + input.ToString() ;
 
 
@@ -69,7 +67,7 @@ public class InputManger : MonoBehaviour
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(input))
+                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -79,8 +77,8 @@ public class InputManger : MonoBehaviour
 
             yield return null;
         }
-        usedKeyCode.Append(input);
-        LeftKeyCode = input;
+        usedKeyCode.Add(input);
+        soInput.LeftKeyCode = input;
         LeftText.text = "LEFT : " + input.ToString();
 
 
@@ -94,7 +92,7 @@ public class InputManger : MonoBehaviour
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(input))
+                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -104,8 +102,8 @@ public class InputManger : MonoBehaviour
 
             yield return null;
         }
-        usedKeyCode.Append(input);
-        JumpKeyCode = input;
+        usedKeyCode.Add(input);
+        soInput.JumpKeyCode = input;
         JumpText.text = "JUMP : " + input.ToString();
 
         JumpScreen.SetActive(false);
