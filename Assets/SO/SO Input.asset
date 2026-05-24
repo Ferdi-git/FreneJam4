@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318482dde93f8b04d9c72c6b550ce936, type: 3}
   m_Name: SO Input
   m_EditorClassIdentifier: Assembly-CSharp::SOInput
-  RightKeyCode: 0
-  LeftKeyCode: 0
-  JumpKeyCode: 0
+  RightKeyCode: 117
+  LeftKeyCode: 121
+  JumpKeyCode: 105

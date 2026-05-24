@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private SOInput soInput;
+    [SerializeField] private SOSave soSave;
     [SerializeField] private float maxSpeed = 8f;
     [SerializeField] private float acceleration = 50f;
     [SerializeField] private float deceleration = 80f;
@@ -16,7 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-    private void Start() => rb = GetComponent<Rigidbody2D>();
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        if(soSave.currentCheckPoint != Vector3.zero)
+            transform.position =  soSave.currentCheckPoint;
+    }
 
     private void Update()
     {

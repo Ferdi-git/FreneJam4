@@ -18,7 +18,7 @@ public class InputManger : MonoBehaviour
     [SerializeField] private GameObject LeftScreen;
     [SerializeField] private GameObject JumpScreen;
 
-    [SerializeField] List<KeyCode> usedKeyCode;
+    [SerializeField] private SOSave soSave;
 
     private void Start()
     {
@@ -35,13 +35,17 @@ public class InputManger : MonoBehaviour
         JumpScreen.SetActive(false);
 
 
+        soInput.JumpKeyCode = KeyCode.None ;
+        soInput.LeftKeyCode = KeyCode.None ;
+        soInput.RightKeyCode = KeyCode.None ;
+
         bool foundInput = false;
         KeyCode input = KeyCode.None;
         while (!foundInput)
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
+                if (Input.GetKeyDown(kcode) && !soSave.usedKeyCodes.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -51,7 +55,7 @@ public class InputManger : MonoBehaviour
              
             yield return null;
         }
-        usedKeyCode.Add(input);
+        soSave.usedKeyCodes.Add(input);
         soInput.RightKeyCode = input;
         RightText.text = "RIGHT : " + input.ToString() ;
 
@@ -67,7 +71,7 @@ public class InputManger : MonoBehaviour
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
+                if (Input.GetKeyDown(kcode) && !soSave.usedKeyCodes.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -77,7 +81,7 @@ public class InputManger : MonoBehaviour
 
             yield return null;
         }
-        usedKeyCode.Add(input);
+        soSave.usedKeyCodes.Add(input);
         soInput.LeftKeyCode = input;
         LeftText.text = "LEFT : " + input.ToString();
 
@@ -92,7 +96,7 @@ public class InputManger : MonoBehaviour
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(kcode) && !usedKeyCode.Contains(kcode))
+                if (Input.GetKeyDown(kcode) && !soSave.usedKeyCodes.Contains(kcode))
                 {
                     input = kcode;
                     foundInput = true;
@@ -102,7 +106,7 @@ public class InputManger : MonoBehaviour
 
             yield return null;
         }
-        usedKeyCode.Add(input);
+        soSave.usedKeyCodes.Add(input);
         soInput.JumpKeyCode = input;
         JumpText.text = "JUMP : " + input.ToString();
 
