@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66be704e12ecd234d80786f78af99d8f, type: 3}
   m_Name: SO Save
   m_EditorClassIdentifier: Assembly-CSharp::SOSave
-  currentCheckPoint: {x: 0.3970003, y: -0.947, z: 0}
-  usedKeyCodes: 6400000061000000200000006700000066000000680000006a0000006b0000006c00000069000000750000006f000000
+  currentCheckPoint: {x: 0, y: 0, z: 0}
+  usedKeyCodes: 
